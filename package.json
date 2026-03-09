@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
@@ -14,10 +15,10 @@
     "isbot": "^5.1.31",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "7.12.0"
+    "react-router": "7.12.0",
+    "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.8",
     "@react-router/dev": "7.12.0",
     "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^22",
