@@ -204,7 +204,8 @@ export function Welcome() {
               <p className="text-3xl font-bold text-gray-900">{d.name}</p>
             )}
           </div>
-
+          {loading && <p>Loading...</p>}
+          {error && <p>ERROR Fetch Data!</p>}
         </section>
       </section>
     </main>
