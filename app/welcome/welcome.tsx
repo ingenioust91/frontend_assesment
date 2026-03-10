@@ -157,24 +157,14 @@ export function Welcome() {
         <section className="h-[10%] flex text-sm text-blue-500 gap-5 border-b-2 border-gray-200 p-5">
             <p>Indonesia</p>
 
-            {province.filter((p)=>p.id == parseInt(selectedProv)).map((p)=>
-              <><p>›</p>
-              <p>{p.name}</p>
-              </>
-            )}
+            <p>{selectedProv && '›'}</p>
+            <p>{selectedProv && province.find((p) => p.id === parseInt(selectedProv))?.name}</p>
 
+            <p>{selectedReg && '›'}</p>
+            <p>{selectedReg && regency.find((r) => r.id === parseInt(selectedReg))?.name}</p>
 
-            {selectedReg && regency.filter((r)=>r.id == parseInt(selectedReg)).map((r)=>
-              <><p>›</p>
-              <p>{r.name}</p>
-              </>
-            )}
-
-            {selectedDis && district.filter((d)=>d.id == parseInt(selectedDis)).map((d)=>
-              <><p>›</p>
-              <p>{d.name}</p>
-              </>
-            )}
+            <p>{selectedDis && '›'}</p>
+            <p>{selectedDis && district.find((d) => d.id === parseInt(selectedDis))?.name}</p>
 
         </section>
 
@@ -182,28 +172,31 @@ export function Welcome() {
         <section className="bg-gray-100 h-[90%] flex gap-10 flex-col w-full items-center justify-center">
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">PROVINSI</p>
-            {!selectedProv && <p className="text-5xl font-bold text-gray-200">Silahkan pilih provinsi</p>}
-            {province.filter((p)=>p.id == parseInt(selectedProv)).map((p)=>
-              <p className="text-5xl font-bold text-gray-900">{p.name}</p>
-            )}
+            <p className={`text-5xl font-bold min-h-10 ${selectedProv ? 'text-gray-900' : 'text-gray-200'}`}>
+              {selectedProv
+                ? province.find((r) => r.id === parseInt(selectedProv))?.name
+                : "Silahkan pilih Provinsi"}
+            </p>
           </div>
           <p className="text-gray-200 text-3xl">↓</p>
 
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">KOTA/KABUPATEN</p>
-            {!selectedReg && <p className="text-4xl font-bold text-gray-200">Silahkan pilih kota/kabupaten</p>}
-            {selectedReg && regency.filter((r)=>r.id == parseInt(selectedReg)).map((r)=>
-              <p className="text-4xl font-bold text-gray-900">{r.name}</p>
-            )}
+            <p className={`text-4xl font-bold min-h-10 ${selectedReg ? 'text-gray-900' : 'text-gray-200'}`}>
+              {selectedReg
+                ? regency.find((r) => r.id === parseInt(selectedReg))?.name
+                : "Silahkan pilih kota"}
+            </p>
           </div>
           <p className="text-gray-200 text-3xl">↓</p>
 
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">KECAMATAN</p>
-            {!selectedDis && <p className="text-3xl font-bold text-gray-200">Silahkan pilih kecamatan</p>}
-            {selectedDis && district.filter((d)=>d.id == parseInt(selectedDis)).map((d)=>
-              <p className="text-3xl font-bold text-gray-900">{d.name}</p>
-            )}
+            <p className={`text-3xl font-bold min-h-10 ${selectedDis ? 'text-gray-900' : 'text-gray-200'}`}>
+              {selectedDis
+                ? district.find((r) => r.id === parseInt(selectedDis))?.name
+                : "Silahkan pilih kecamatan"}
+            </p>
           </div>
           {loading && <p>Loading...</p>}
           {error && <p>ERROR Fetch Data!</p>}
