@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
 
 type province = {
   id : number,
@@ -184,6 +182,7 @@ export function Welcome() {
         <section className="bg-gray-100 h-[90%] flex gap-10 flex-col w-full items-center justify-center">
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">PROVINSI</p>
+            {!selectedProv && <p className="text-5xl font-bold text-gray-200">Silahkan pilih provinsi</p>}
             {province.filter((p)=>p.id == parseInt(selectedProv)).map((p)=>
               <p className="text-5xl font-bold text-gray-900">{p.name}</p>
             )}
@@ -192,6 +191,7 @@ export function Welcome() {
 
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">KOTA/KABUPATEN</p>
+            {!selectedReg && <p className="text-4xl font-bold text-gray-200">Silahkan pilih kota/kabupaten</p>}
             {selectedReg && regency.filter((r)=>r.id == parseInt(selectedReg)).map((r)=>
               <p className="text-4xl font-bold text-gray-900">{r.name}</p>
             )}
@@ -200,6 +200,7 @@ export function Welcome() {
 
           <div className="flex flex-col items-center justify-center">
             <p className="text-xs text-blue-500 tracking-widest">KECAMATAN</p>
+            {!selectedDis && <p className="text-3xl font-bold text-gray-200">Silahkan pilih kecamatan</p>}
             {selectedDis && district.filter((d)=>d.id == parseInt(selectedDis)).map((d)=>
               <p className="text-3xl font-bold text-gray-900">{d.name}</p>
             )}
